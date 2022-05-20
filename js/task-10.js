@@ -18,15 +18,18 @@ function changeAmount() {
 }
 
 function createBoxes() {
+  const length = boxesArray.length;
   for (let i = 0; i < amount; i += 1) {
     boxesArray.push(document.createElement('div'));
-    boxesArray[i].style.backgroundColor = getRandomHexColor();
-    boxesArray[i].style.height = `${30 + i * 10}px`;
-    boxesArray[i].style.width = `${30 + i * 10}px`;
+    boxesArray[i + length].style.backgroundColor = getRandomHexColor();
+    boxesArray[i + length].style.height = `${30 + i * 10}px`;
+    boxesArray[i + length].style.width = `${30 + i * 10}px`;
   }
-return boxes.append(...boxesArray);
+  input.value = "";
+  return boxes.append(...boxesArray);
 }
 
 function destroyBoxes() {
   boxes.querySelectorAll('div').forEach(el => el.remove());
+  boxesArray.length = 0;
 }
